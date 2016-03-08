@@ -72,7 +72,7 @@
 						<li>Tags</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -109,7 +109,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/好文章/" style="font-size: 10px;">好文章</a> <a href="/tags/摘要/" style="font-size: 10px;">摘要</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+						<a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/好文章/" style="font-size: 10px;">好文章</a> <a href="/tags/摘要/" style="font-size: 10px;">摘要</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
 					</div>
 				</section>
 				
@@ -177,6 +177,63 @@
 
       <div class="body-wrap">
   
+    <article id="post-ThreadLocal运行原理分析" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/08/ThreadLocal运行原理分析/" class="article-date">
+  	<time datetime="2016-03-08T08:02:45.000Z" itemprop="datePublished">2016-03-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/08/ThreadLocal运行原理分析/">ThreadLocal运行原理分析</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Java并发编程实战 P37 参考这个写<br>这些特定于线程的值保持在Thread对象中，当线程终止后，这些值会作为垃圾回收。<br>最近遇到一个比较隐蔽而又简单地问题,在使用ThreadLocal时发现出现多个线程中值串来串去,<br>排查一番,确定问题为线程池的问题,线程池中的线程是会重复利用的,而ThreadLocal是用线程来<br>做Key的所以在使用线程池的时候要特别注意ThreadLocal.</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-学习摘要" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -204,10 +261,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ul>
-<li><font size="4">加锁的含义不仅仅局限于互斥行为，还包括内存可见性。为了确保所有线程都能看到共享变量的最新值，所有执行读操作或者写操作的线程都必须在同一个锁上同步。</font></li>
-<li><font size="4">加锁机制既可以确保可见性又可以确保原子性，而volatile变量只能确保可见性。</font></li>
-</ul>
-
+<li><font size=4>加锁的含义不仅仅局限于互斥行为，还包括内存可见性。为了确保所有线程都能看到共享变量的最新值，所有执行读操作或者写操作的线程都必须在同一个锁上同步。</font></li>
+<li><font size=4>加锁机制既可以确保可见性又可以确保原子性，而volatile变量只能确保可见性。</font></li>
+<li><font size=4>当某个对象封闭在一个线程中时，这种用法将自动实现线程安全性，这种技术被称为线程封闭,例如ThreadLocal类。</font>
       
     </div>
     
@@ -220,6 +276,10 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/08/学习摘要/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

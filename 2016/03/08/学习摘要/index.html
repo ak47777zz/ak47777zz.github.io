@@ -7,18 +7,21 @@
   <title>学习摘要 | 我的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="加锁的含义不仅仅局限于互斥行为，还包括内存可见性。为了确保所有线程都能看到共享变量的最新值，所有执行读操作或者写操作的线程都必须在同一个锁上同步。
-加锁机制既可以确保可见性又可以确保原子性，而volatile变量只能确保可见性。">
+加锁机制既可以确保可见性又可以确保原子性，而volatile变量只能确保可见性。
+当某个对象封闭在一个线程中时，这种用法将自动实现线程安全性，这种技术被称为线程封闭,例如ThreadLocal类。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习摘要">
 <meta property="og:url" content="http://yoursite.com/2016/03/08/学习摘要/index.html">
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="加锁的含义不仅仅局限于互斥行为，还包括内存可见性。为了确保所有线程都能看到共享变量的最新值，所有执行读操作或者写操作的线程都必须在同一个锁上同步。
-加锁机制既可以确保可见性又可以确保原子性，而volatile变量只能确保可见性。">
-<meta property="og:updated_time" content="2016-03-08T06:48:14.101Z">
+加锁机制既可以确保可见性又可以确保原子性，而volatile变量只能确保可见性。
+当某个对象封闭在一个线程中时，这种用法将自动实现线程安全性，这种技术被称为线程封闭,例如ThreadLocal类。">
+<meta property="og:updated_time" content="2016-03-08T12:01:57.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习摘要">
 <meta name="twitter:description" content="加锁的含义不仅仅局限于互斥行为，还包括内存可见性。为了确保所有线程都能看到共享变量的最新值，所有执行读操作或者写操作的线程都必须在同一个锁上同步。
-加锁机制既可以确保可见性又可以确保原子性，而volatile变量只能确保可见性。">
+加锁机制既可以确保可见性又可以确保原子性，而volatile变量只能确保可见性。
+当某个对象封闭在一个线程中时，这种用法将自动实现线程安全性，这种技术被称为线程封闭,例如ThreadLocal类。">
   
     <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
   
@@ -76,7 +79,7 @@
 						<li>Tags</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -113,7 +116,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/好文章/" style="font-size: 10px;">好文章</a> <a href="/tags/摘要/" style="font-size: 10px;">摘要</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+						<a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/好文章/" style="font-size: 10px;">好文章</a> <a href="/tags/摘要/" style="font-size: 10px;">摘要</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
 					</div>
 				</section>
 				
@@ -219,6 +222,11 @@
         <ul>
 <li><font size="4">加锁的含义不仅仅局限于互斥行为，还包括内存可见性。为了确保所有线程都能看到共享变量的最新值，所有执行读操作或者写操作的线程都必须在同一个锁上同步。</font></li>
 <li><font size="4">加锁机制既可以确保可见性又可以确保原子性，而volatile变量只能确保可见性。</font></li>
+<li><font size="4">当某个对象封闭在一个线程中时，这种用法将自动实现线程安全性，这种技术被称为线程封闭,例如ThreadLocal类。</font><a id="more"></a> </li>
+<li><font size="4">不可变对象一定是线程安全的。</font></li>
+<li><font size="4">正如“除非需要更高的可见性，否则应将所有的域都声明为私有域”是一个良好的编程习惯，“除非需要某个域是可变的，否则应将其声明为final域”也是一个良好的编程习惯。</font></li>
+<li><font size="4">final域能确保初始化过程的安全性，从而可以不受限制地访问不可变对象，并在共享这些对象时无须同步。</font></li>
+<li><font size="4">Queue是非阻塞队列，BlockingQueue是阻塞队列。</font></li>
 </ul>
 
       
@@ -228,6 +236,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2016/03/08/ThreadLocal运行原理分析/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          ThreadLocal运行原理分析
+        
+      </div>
+    </a>
   
   
     <a href="/2016/03/05/看过的好文章整理/" id="article-nav-older" class="article-nav-link-wrap">
