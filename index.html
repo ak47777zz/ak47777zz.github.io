@@ -72,7 +72,7 @@
 						<li>Tags</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -203,8 +203,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Java并发编程实战 P37 参考这个写<br>这些特定于线程的值保持在Thread对象中，当线程终止后，这些值会作为垃圾回收。<br>最近遇到一个比较隐蔽而又简单地问题,在使用ThreadLocal时发现出现多个线程中值串来串去,<br>排查一番,确定问题为线程池的问题,线程池中的线程是会重复利用的,而ThreadLocal是用线程来<br>做Key的所以在使用线程池的时候要特别注意ThreadLocal.</p>
-
+        <p>最近新建了这个博客，打算写一些东西填充一下版面。正好刚刚看了一些关于ThreadLocal的东西，那就写一下ThreadLocal运行原理的分析吧。</p>
+<blockquote>
+<p>ThreadLocal为解决多线程程序的并发问题提供了一种新的思路，当使用ThreadLocal维护变量时，ThreadLocal为每个使用该变量的线程提供独立的变量副本，所以每一个线程都可以独立地改变自己的副本，而不会影响其它线程所对应的副本。<br>
       
     </div>
     
@@ -217,6 +218,10 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/08/ThreadLocal运行原理分析/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

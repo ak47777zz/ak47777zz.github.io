@@ -6,16 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>ThreadLocal运行原理分析 | 我的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java并发编程实战 P37 参考这个写这些特定于线程的值保持在Thread对象中，当线程终止后，这些值会作为垃圾回收。最近遇到一个比较隐蔽而又简单地问题,在使用ThreadLocal时发现出现多个线程中值串来串去,排查一番,确定问题为线程池的问题,线程池中的线程是会重复利用的,而ThreadLocal是用线程来做Key的所以在使用线程池的时候要特别注意ThreadLocal.">
+  <meta name="description" content="最近新建了这个博客，打算写一些东西填充一下版面。正好刚刚看了一些关于ThreadLocal的东西，那就写一下ThreadLocal运行原理的分析吧。
+
+ThreadLocal为解决多线程程序的并发问题提供了一种新的思路，当使用ThreadLocal维护变量时，ThreadLocal为每个使用该变量的线程提供独立的变量副本，所以每一个线程都可以独立地改变自己的副本，而不会影响其它线程所对应的副本。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ThreadLocal运行原理分析">
 <meta property="og:url" content="http://yoursite.com/2016/03/08/ThreadLocal运行原理分析/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="Java并发编程实战 P37 参考这个写这些特定于线程的值保持在Thread对象中，当线程终止后，这些值会作为垃圾回收。最近遇到一个比较隐蔽而又简单地问题,在使用ThreadLocal时发现出现多个线程中值串来串去,排查一番,确定问题为线程池的问题,线程池中的线程是会重复利用的,而ThreadLocal是用线程来做Key的所以在使用线程池的时候要特别注意ThreadLocal.">
-<meta property="og:updated_time" content="2016-03-08T08:08:40.340Z">
+<meta property="og:description" content="最近新建了这个博客，打算写一些东西填充一下版面。正好刚刚看了一些关于ThreadLocal的东西，那就写一下ThreadLocal运行原理的分析吧。
+
+ThreadLocal为解决多线程程序的并发问题提供了一种新的思路，当使用ThreadLocal维护变量时，ThreadLocal为每个使用该变量的线程提供独立的变量副本，所以每一个线程都可以独立地改变自己的副本，而不会影响其它线程所对应的副本。">
+<meta property="og:updated_time" content="2016-03-09T13:28:01.256Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ThreadLocal运行原理分析">
-<meta name="twitter:description" content="Java并发编程实战 P37 参考这个写这些特定于线程的值保持在Thread对象中，当线程终止后，这些值会作为垃圾回收。最近遇到一个比较隐蔽而又简单地问题,在使用ThreadLocal时发现出现多个线程中值串来串去,排查一番,确定问题为线程池的问题,线程池中的线程是会重复利用的,而ThreadLocal是用线程来做Key的所以在使用线程池的时候要特别注意ThreadLocal.">
+<meta name="twitter:description" content="最近新建了这个博客，打算写一些东西填充一下版面。正好刚刚看了一些关于ThreadLocal的东西，那就写一下ThreadLocal运行原理的分析吧。
+
+ThreadLocal为解决多线程程序的并发问题提供了一种新的思路，当使用ThreadLocal维护变量时，ThreadLocal为每个使用该变量的线程提供独立的变量副本，所以每一个线程都可以独立地改变自己的副本，而不会影响其它线程所对应的副本。">
   
     <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
   
@@ -73,7 +79,7 @@
 						<li>Tags</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -213,7 +219,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Java并发编程实战 P37 参考这个写<br>这些特定于线程的值保持在Thread对象中，当线程终止后，这些值会作为垃圾回收。<br>最近遇到一个比较隐蔽而又简单地问题,在使用ThreadLocal时发现出现多个线程中值串来串去,<br>排查一番,确定问题为线程池的问题,线程池中的线程是会重复利用的,而ThreadLocal是用线程来<br>做Key的所以在使用线程池的时候要特别注意ThreadLocal.</p>
+        <p>最近新建了这个博客，打算写一些东西填充一下版面。正好刚刚看了一些关于ThreadLocal的东西，那就写一下ThreadLocal运行原理的分析吧。</p>
+<blockquote>
+<p>ThreadLocal为解决多线程程序的并发问题提供了一种新的思路，当使用ThreadLocal维护变量时，ThreadLocal为每个使用该变量的线程提供独立的变量副本，所以每一个线程都可以独立地改变自己的副本，而不会影响其它线程所对应的副本。<br><a id="more"></a><br>首先来一个简单的Demo：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadLocalTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> ThreadLocal&lt;Integer&gt; threadLocal = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> ThreadLocalTest test = <span class="keyword">new</span> ThreadLocalTest();</span><br><span class="line">        test.threadLocal.set(<span class="number">1</span>);</span><br><span class="line">        System.out.println(<span class="string">"主线程ThreadLocal的值 = "</span>+test.threadLocal.get());</span><br><span class="line">        <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"新线程ThreadLocal的值 = "</span>+test.threadLocal.get());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>运行结果：</p>
+<blockquote>
+<p>主线程ThreadLocal的值 = 1<br>新线程ThreadLocal的值 = null</p>
+</blockquote>
+<p>通过这个简单的demo可以发现，在主线程对当前ThreadLocal对象set为1。当主线程对这个ThreadLocal对象get的时候，获取的值为期望的1，而在另一个线程对这个ThreadLocal对象获取的值为null。由此可见，ThreadLocal对象中的值只在对它进行赋值的线程具有可见性。这种特性就是所谓的<strong>线程封闭</strong>。</p>
+<blockquote>
+<p>当某个对象封闭在一个线程中，这种用法将自动实现线程安全性，这种技术被称为线程封闭。</p>
+</blockquote>
+<p>接下来分析ThreadLocal是如何保证线程封闭的。首先来看一下ThreadLocal的set方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(T value)</span> </span>&#123;</span><br><span class="line">        Thread t = Thread.currentThread();</span><br><span class="line">        ThreadLocalMap map = getMap(t);</span><br><span class="line">        <span class="keyword">if</span> (map != <span class="keyword">null</span>)</span><br><span class="line">            map.set(<span class="keyword">this</span>, value);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            createMap(t, value);</span><br><span class="line">    &#125;</span><br><span class="line">-----------------------------------------------------------------------------------------------  </span><br><span class="line"><span class="function">ThreadLocalMap <span class="title">getMap</span><span class="params">(Thread t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> t.threadLocals;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>首先获取到当前线程对象t，接着以t为参数调用getMap方法，返回ThreadLocalMap类型，我们点开ThreadLocalMap发现ThreadLocalMap是ThreadLocal类的静态内部类，ThreadLocalMap以ThreadLocal对象为Key，以set方法的参数为value，用法类似于HashMap。接下来通过getMap方法我们发现原来ThreadLocalMap是Thread类的属性之一。看到这里相信大家应该可以推测出ThreadLocal的get方法，首先拿到当前线程的属性之一ThreadLocalMap，其次以自身为Key查找此Map，如果Key存在返回对应的值，key不存在返回null。接下来点开get方法，发现确实如此。</p>
+<pre><code class="java"><span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">()</span> </span>{
+        Thread t = Thread.currentThread();
+        ThreadLocalMap map = getMap(t);
+        <span class="keyword">if</span> (map != <span class="keyword">null</span>) {
+            ThreadLocalMap.Entry e = map.getEntry(<span class="keyword">this</span>);
+            <span class="keyword">if</span> (e != <span class="keyword">null</span>)
+                <span class="keyword">return</span> (T)e.value;
+        }
+        <span class="keyword">return</span> setInitialValue();
+    }
+-----------------------------------------------------------------------------------------------   
+<span class="function">ThreadLocalMap <span class="title">getMap</span><span class="params">(Thread t)</span> </span>{
+        <span class="keyword">return</span> t.threadLocals;
+    }
+</code></pre>
+<p>通过当前Thread对象获取ThreadLocalMap再获取value。<br>由于ThreadLocalMap被Thread引用，这就保证了当Thread被销毁时，被引用的ThreadLocalMap因失去引用而进入GC。<br>在使用线程池时如果使用了ThreadLocal一定记得使用完线程要记得清空ThreadLocal，否则当此线程一下次被使用时，其中的ThreadLocalMap可能会造成隐患。<br>好了，ThreadLocal大致的原理已经讲完了，其他细节我也没有再深入研究:see_no_evil:，写的不好见谅了:grin:。</p>
 
       
     </div>

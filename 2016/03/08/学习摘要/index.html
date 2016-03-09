@@ -16,7 +16,7 @@
 <meta property="og:description" content="加锁的含义不仅仅局限于互斥行为，还包括内存可见性。为了确保所有线程都能看到共享变量的最新值，所有执行读操作或者写操作的线程都必须在同一个锁上同步。
 加锁机制既可以确保可见性又可以确保原子性，而volatile变量只能确保可见性。
 当某个对象封闭在一个线程中时，这种用法将自动实现线程安全性，这种技术被称为线程封闭,例如ThreadLocal类。">
-<meta property="og:updated_time" content="2016-03-08T12:01:57.242Z">
+<meta property="og:updated_time" content="2016-03-09T01:57:36.079Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习摘要">
 <meta name="twitter:description" content="加锁的含义不仅仅局限于互斥行为，还包括内存可见性。为了确保所有线程都能看到共享变量的最新值，所有执行读操作或者写操作的线程都必须在同一个锁上同步。
@@ -79,7 +79,7 @@
 						<li>Tags</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -227,6 +227,8 @@
 <li><font size="4">正如“除非需要更高的可见性，否则应将所有的域都声明为私有域”是一个良好的编程习惯，“除非需要某个域是可变的，否则应将其声明为final域”也是一个良好的编程习惯。</font></li>
 <li><font size="4">final域能确保初始化过程的安全性，从而可以不受限制地访问不可变对象，并在共享这些对象时无须同步。</font></li>
 <li><font size="4">Queue是非阻塞队列，BlockingQueue是阻塞队列。</font></li>
+<li><font size="4">一种最常见的生产者-消费者设计模式就是线程池与工作队列的组合，在Executor任务执行框架中就体现了这种模式。</font></li>
+<li><font size="4">当某方法抛出InterruptedException时，表示该方法是一个阻塞方法。<a href="http://blog.csdn.net/derekjiang/article/details/4845757" target="_blank" rel="external">Java线程之 InterruptedException 异常</a></font></li>
 </ul>
 
       
