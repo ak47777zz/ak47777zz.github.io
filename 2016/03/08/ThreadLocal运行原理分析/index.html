@@ -249,7 +249,7 @@ ThreadLocal为解决多线程程序的并发问题提供了一种新的思路，
         <span class="keyword">return</span> t.threadLocals;
     }
 </code></pre>
-<p>通过当前Thread对象获取ThreadLocalMap再获取value。<br>由于ThreadLocalMap被Thread引用，这就保证了当Thread被销毁时，被引用的ThreadLocalMap因失去引用而进入GC。<br>在使用线程池时如果使用了ThreadLocal一定记得使用完线程要记得清空ThreadLocal，否则当此线程下一次被使用时，其中的ThreadLocalMap可能会造成隐患。<br>好了，ThreadLocal大致的原理已经讲完了，其他细节我也没有再深入研究O(∩_∩)O~，写的不好见谅了。</p>
+<p>通过当前Thread对象获取ThreadLocalMap再获取value。<br>由于ThreadLocalMap被Thread引用，这就保证了当Thread被销毁时，被引用的ThreadLocalMap因失去引用而进入GC。<br>在使用线程池时如果使用了ThreadLocal一定记得使用完线程要记得清空ThreadLocal，否则当此线程下一次被使用时，其中的ThreadLocalMap可能会造成隐患。<br>好了，ThreadLocal大致的原理已经讲完了，其他细节我也没有再深入研究O(∩_∩)O~，写的不好见谅了。&#x1F3C1</p>
 
       
     </div>
