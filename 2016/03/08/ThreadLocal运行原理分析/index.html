@@ -29,6 +29,7 @@ ThreadLocal为解决多线程程序的并发问题提供了一种新的思路，
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
+  <script src="//twemoji.maxcdn.com/twemoji.min.js"></script>
 </head>
 
 <body>
@@ -219,7 +220,7 @@ ThreadLocal为解决多线程程序的并发问题提供了一种新的思路，
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近新建了这个博客，打算写一些东西填充一下版面。正好刚刚看了一些关于ThreadLocal的东西，那就写一下ThreadLocal运行原理的分析吧。</p>
+        <p>最近新建了这个博客，&#x1F3C1打算写一些东西填充一下版面。正好刚刚看了一些关于ThreadLocal的东西，那就写一下ThreadLocal运行原理的分析吧。</p>
 <blockquote>
 <p>ThreadLocal为解决多线程程序的并发问题提供了一种新的思路，当使用ThreadLocal维护变量时，ThreadLocal为每个使用该变量的线程提供独立的变量副本，所以每一个线程都可以独立地改变自己的副本，而不会影响其它线程所对应的副本。<br><a id="more"></a><br>首先来一个简单的Demo：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadLocalTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> ThreadLocal&lt;Integer&gt; threadLocal = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> ThreadLocalTest test = <span class="keyword">new</span> ThreadLocalTest();</span><br><span class="line">        test.threadLocal.set(<span class="number">1</span>);</span><br><span class="line">        System.out.println(<span class="string">"主线程ThreadLocal的值 = "</span>+test.threadLocal.get());</span><br><span class="line">        <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"新线程ThreadLocal的值 = "</span>+test.threadLocal.get());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
