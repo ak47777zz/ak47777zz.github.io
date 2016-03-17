@@ -16,12 +16,14 @@ ThreadLocal为解决多线程程序的并发问题提供了一种新的思路，
 <meta property="og:description" content="最近新建了这个博客，打算写一些东西填充一下版面。正好刚刚看了一些关于ThreadLocal的东西，那就写一下ThreadLocal运行原理的分析吧。
 
 ThreadLocal为解决多线程程序的并发问题提供了一种新的思路，当使用ThreadLocal维护变量时，ThreadLocal为每个使用该变量的线程提供独立的变量副本，所以每一个线程都可以独立地改变自己的副本，而不会影响其它线程所对应的副本。">
-<meta property="og:updated_time" content="2016-03-10T01:25:05.971Z">
+<meta property="og:image" content="http://7xrl7e.com1.z0.glb.clouddn.com/ThreadLocal.jpg">
+<meta property="og:updated_time" content="2016-03-16T05:21:08.299Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ThreadLocal运行原理分析">
 <meta name="twitter:description" content="最近新建了这个博客，打算写一些东西填充一下版面。正好刚刚看了一些关于ThreadLocal的东西，那就写一下ThreadLocal运行原理的分析吧。
 
 ThreadLocal为解决多线程程序的并发问题提供了一种新的思路，当使用ThreadLocal维护变量时，ThreadLocal为每个使用该变量的线程提供独立的变量副本，所以每一个线程都可以独立地改变自己的副本，而不会影响其它线程所对应的副本。">
+<meta name="twitter:image" content="http://7xrl7e.com1.z0.glb.clouddn.com/ThreadLocal.jpg">
   
     <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
   
@@ -29,7 +31,6 @@ ThreadLocal为解决多线程程序的并发问题提供了一种新的思路，
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-  <script src="//twemoji.maxcdn.com/twemoji.min.js"></script>
 </head>
 
 <body>
@@ -80,7 +81,7 @@ ThreadLocal为解决多线程程序的并发问题提供了一种新的思路，
 						<li>Tags</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -249,7 +250,7 @@ ThreadLocal为解决多线程程序的并发问题提供了一种新的思路，
         <span class="keyword">return</span> t.threadLocals;
     }
 </code></pre>
-<p>通过当前Thread对象获取ThreadLocalMap再获取value。<br>由于ThreadLocalMap被Thread引用，这就保证了当Thread被销毁时，被引用的ThreadLocalMap因失去引用而进入GC。<br>在使用线程池时如果使用了ThreadLocal一定记得使用完线程要记得清空ThreadLocal，否则当此线程下一次被使用时，其中的ThreadLocalMap可能会造成隐患。<br>好了，ThreadLocal大致的原理已经讲完了，其他细节我也没有再深入研究O(∩_∩)O~，写的不好见谅了。&#x1F3C1</p>
+<p>通过当前Thread对象获取ThreadLocalMap再获取value。<br>由于ThreadLocalMap被Thread引用，这就保证了当Thread被销毁时，被引用的ThreadLocalMap因失去引用而进入GC。<br>在使用线程池时如果使用了ThreadLocal一定记得使用完线程要记得清空ThreadLocal，否则当此线程下一次被使用时，其中的ThreadLocalMap可能会造成隐患。<br>好了，ThreadLocal大致的原理已经讲完了，其他细节我也没有再深入研究O(∩_∩)O~，写的不好见谅了。<br>在网上找到一张非常清晰的图片<br><img src="http://7xrl7e.com1.z0.glb.clouddn.com/ThreadLocal.jpg" alt=""></p>
 
       
     </div>
