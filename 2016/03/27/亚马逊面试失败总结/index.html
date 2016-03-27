@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>ArrayList中的数组为什么被transient修饰 | 我的博客</title>
+  <title>亚马逊面试失败总结 | 我的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java中的ArrayList底层实现机制是动态扩容数组，最近在看ArrayList源码时发现数组被定义为transient，源代码如下1private transient Object[] elementData;">
+  <meta name="description" content="朋友给内推了亚马逊中国物流部的Java实习。项目介绍和Java基础问题倒是没什么难度。后来出了一道算法题，移除排序数组中重复元素，并要求不开辟新空间，让我在纸上写出代码。我的算法能力说多了都是泪，直接写了一个最简单O（n^2）的解法。面试官让我写一个O（n）的解法，我想了半天硬是没想出来~~(&amp;gt;_&amp;lt;)~~，面试官为了缓和尴尬局面说这题不做了，给你出一道SQL题。给我两个数据表让我按要求">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ArrayList中的数组为什么被transient修饰">
-<meta property="og:url" content="http://yoursite.com/2016/03/17/ArrayList中的数组为什么被transient修饰/index.html">
+<meta property="og:title" content="亚马逊面试失败总结">
+<meta property="og:url" content="http://yoursite.com/2016/03/27/亚马逊面试失败总结/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="Java中的ArrayList底层实现机制是动态扩容数组，最近在看ArrayList源码时发现数组被定义为transient，源代码如下1private transient Object[] elementData;">
-<meta property="og:updated_time" content="2016-03-17T07:36:32.414Z">
+<meta property="og:description" content="朋友给内推了亚马逊中国物流部的Java实习。项目介绍和Java基础问题倒是没什么难度。后来出了一道算法题，移除排序数组中重复元素，并要求不开辟新空间，让我在纸上写出代码。我的算法能力说多了都是泪，直接写了一个最简单O（n^2）的解法。面试官让我写一个O（n）的解法，我想了半天硬是没想出来~~(&amp;gt;_&amp;lt;)~~，面试官为了缓和尴尬局面说这题不做了，给你出一道SQL题。给我两个数据表让我按要求">
+<meta property="og:updated_time" content="2016-03-27T13:54:01.753Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ArrayList中的数组为什么被transient修饰">
-<meta name="twitter:description" content="Java中的ArrayList底层实现机制是动态扩容数组，最近在看ArrayList源码时发现数组被定义为transient，源代码如下1private transient Object[] elementData;">
+<meta name="twitter:title" content="亚马逊面试失败总结">
+<meta name="twitter:description" content="朋友给内推了亚马逊中国物流部的Java实习。项目介绍和Java基础问题倒是没什么难度。后来出了一道算法题，移除排序数组中重复元素，并要求不开辟新空间，让我在纸上写出代码。我的算法能力说多了都是泪，直接写了一个最简单O（n^2）的解法。面试官让我写一个O（n）的解法，我想了半天硬是没想出来~~(&amp;gt;_&amp;lt;)~~，面试官为了缓和尴尬局面说这题不做了，给你出一道SQL题。给我两个数据表让我按要求">
   
     <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
   
@@ -176,11 +176,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-ArrayList中的数组为什么被transient修饰" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-亚马逊面试失败总结" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/17/ArrayList中的数组为什么被transient修饰/" class="article-date">
-  	<time datetime="2016-03-17T07:20:13.000Z" itemprop="datePublished">2016-03-17</time>
+      <a href="/2016/03/27/亚马逊面试失败总结/" class="article-date">
+  	<time datetime="2016-03-27T12:59:51.000Z" itemprop="datePublished">2016-03-27</time>
 </a>
     </div>
   
@@ -193,7 +193,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      ArrayList中的数组为什么被transient修饰
+      亚马逊面试失败总结
     </h1>
   
 
@@ -202,7 +202,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面经/">面经</a></li></ul>
 	</div>
 
         
@@ -213,10 +213,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Java中的ArrayList底层实现机制是动态扩容数组，最近在看ArrayList源码时发现数组被定义为transient，源代码如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">transient</span> Object[] elementData;</span><br></pre></td></tr></table></figure></p>
-<a id="more"></a> 
-<p>当时有些想不通，为什么最为重要的数组元素要定义为transient？难道不希望elementData被序列化？后来查阅了一些资料了解到，假如elementData的长度为10，而其中只有5个元素，那么在序列化的时候只需要存储5个元素，而数组中后面5个元素是不需要存储的。于是将elementData定义为transient，避免了Java自带的序列化机制，并定义了两个方法writeObject和readObject，实现了自己可控制的序列化<br>具体的细节请查考下面这个文章，写的非常全面。反序列化操作。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">writeObject</span><span class="params">(java.io.ObjectOutputStream s)</span></span><br><span class="line">        <span class="keyword">throws</span> java.io.IOException</span>&#123;</span><br><span class="line">        <span class="comment">// Write out element count, and any hidden stuff</span></span><br><span class="line">        <span class="keyword">int</span> expectedModCount = modCount;</span><br><span class="line">        s.defaultWriteObject();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Write out size as capacity for behavioural compatibility with clone()</span></span><br><span class="line">        s.writeInt(size);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Write out all elements in the proper order.</span></span><br><span class="line">        <span class="comment">// 这里将数组中存在的元素写入流中</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;size; i++) &#123;</span><br><span class="line">            s.writeObject(elementData[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (modCount != expectedModCount) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readObject</span><span class="params">(java.io.ObjectInputStream s)</span></span></span><br></pre></td></tr></table></figure></p>
-<p>具体的细节请查考下面这个文章，写的非常全面。<br><a href="http://bluepopopo.iteye.com/blog/486548" target="_blank" rel="external">什么是writeObject 和readObject？可定制的序列化过程</a></p>
+        <p>朋友给内推了亚马逊中国物流部的Java实习。项目介绍和Java基础问题倒是没什么难度。后来出了一道算法题，移除排序数组中重复元素，并要求不开辟新空间，让我在纸上写出代码。我的算法能力说多了都是泪，直接写了一个最简单O（n^2）的解法。面试官让我写一个O（n）的解法，我想了半天硬是没想出来<del>~~(&gt;_&lt;)</del>~~，面试官为了缓和尴尬局面说这题不做了，给你出一道SQL题。给我两个数据表让我按要求写一个左连接，左连接的语法我也忘了，还是怪自己实力不行。回家想了想这道算法题，贴上一段这道题的解法:<br><a id="more"></a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (array.length == <span class="number">0</span> || array.length == <span class="number">1</span> || array == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (array[i] == array[i - <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                array[index] = array[i];</span><br><span class="line">                index++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -226,18 +223,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/03/26/阿里一面问题整理/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          阿里一面问题整理
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/03/08/ThreadLocal运行原理分析/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">ThreadLocal运行原理分析</div>
+    <a href="/2016/03/26/阿里一面问题整理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">阿里一面问题整理</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -272,7 +260,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="ArrayList中的数组为什么被transient修饰" data-title="ArrayList中的数组为什么被transient修饰" data-url="http://yoursite.com/2016/03/17/ArrayList中的数组为什么被transient修饰/"></div>
+	<div class="ds-thread" data-thread-key="亚马逊面试失败总结" data-title="亚马逊面试失败总结" data-url="http://yoursite.com/2016/03/27/亚马逊面试失败总结/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
