@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/03/27/亚马逊面试失败总结/index.html">
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="朋友给内推了亚马逊中国物流部的Java实习。项目介绍和Java基础问题倒是没什么难度。后来出了一道算法题，移除排序数组中重复元素，并要求不开辟新空间，让我在纸上写出代码。我的算法能力说多了都是泪，直接写了一个最简单O（n^2）的解法。面试官让我写一个O（n）的解法，我想了半天硬是没想出来~~(&amp;gt;_&amp;lt;)~~，面试官为了缓和尴尬局面说这题不做了，给你出一道SQL题。给我两个数据表让我按要求">
-<meta property="og:updated_time" content="2016-03-27T13:54:01.753Z">
+<meta property="og:updated_time" content="2016-03-29T13:42:17.092Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="亚马逊面试失败总结">
 <meta name="twitter:description" content="朋友给内推了亚马逊中国物流部的Java实习。项目介绍和Java基础问题倒是没什么难度。后来出了一道算法题，移除排序数组中重复元素，并要求不开辟新空间，让我在纸上写出代码。我的算法能力说多了都是泪，直接写了一个最简单O（n^2）的解法。面试官让我写一个O（n）的解法，我想了半天硬是没想出来~~(&amp;gt;_&amp;lt;)~~，面试官为了缓和尴尬局面说这题不做了，给你出一道SQL题。给我两个数据表让我按要求">
@@ -73,7 +73,7 @@
 						<li>Tags</li>
 						
 						
-						<li>A propos</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -110,7 +110,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/好文章/" style="font-size: 10px;">好文章</a> <a href="/tags/摘要/" style="font-size: 10px;">摘要</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a> <a href="/tags/面经/" style="font-size: 20px;">面经</a>
+						<a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/好文章/" style="font-size: 10px;">好文章</a> <a href="/tags/摘要/" style="font-size: 10px;">摘要</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a> <a href="/tags/面经/" style="font-size: 20px;">面经</a>
 					</div>
 				</section>
 				
@@ -213,7 +213,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>朋友给内推了亚马逊中国物流部的Java实习。项目介绍和Java基础问题倒是没什么难度。后来出了一道算法题，移除排序数组中重复元素，并要求不开辟新空间，让我在纸上写出代码。我的算法能力说多了都是泪，直接写了一个最简单O（n^2）的解法。面试官让我写一个O（n）的解法，我想了半天硬是没想出来<del>~~(&gt;_&lt;)</del>~~，面试官为了缓和尴尬局面说这题不做了，给你出一道SQL题。给我两个数据表让我按要求写一个左连接，左连接的语法我也忘了，还是怪自己实力不行。回家想了想这道算法题，贴上一段这道题的解法:<br><a id="more"></a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (array.length == <span class="number">0</span> || array.length == <span class="number">1</span> || array == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (array[i] == array[i - <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                array[index] = array[i];</span><br><span class="line">                index++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+        <p><font size="4">朋友给内推了亚马逊中国物流部的Java实习。项目介绍和Java基础问题倒是没什么难度。后来出了一道算法题，移除排序数组中重复元素，并要求不开辟新空间，让我在纸上写出代码。我的算法能力说多了都是泪，直接写了一个最简单O（n^2）的解法。面试官让我写一个O（n）的解法，我想了半天硬是没想出来<del>~~(&gt;_&lt;)</del>~~，面试官为了缓和尴尬局面说这题不做了，给你出一道SQL题。给我两个数据表让我按要求写一个左连接，左连接的语法我也忘了，还是怪自己实力不行。回家想了想这道算法题，贴上一段这道题的解法:</font><br><a id="more"></a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (array.length == <span class="number">0</span> || array.length == <span class="number">1</span> || array == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (array[i] == array[i - <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                array[index] = array[i];</span><br><span class="line">                index++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -222,6 +222,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2016/03/29/汽车之家面经/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          汽车之家面经
+        
+      </div>
+    </a>
   
   
     <a href="/2016/03/26/阿里一面问题整理/" id="article-nav-older" class="article-nav-link-wrap">
