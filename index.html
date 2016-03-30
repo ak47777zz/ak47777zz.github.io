@@ -109,7 +109,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/好文章/" style="font-size: 10px;">好文章</a> <a href="/tags/摘要/" style="font-size: 10px;">摘要</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a> <a href="/tags/面经/" style="font-size: 20px;">面经</a>
+						<a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/好文章/" style="font-size: 10px;">好文章</a> <a href="/tags/摘要/" style="font-size: 10px;">摘要</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a> <a href="/tags/面经/" style="font-size: 20px;">面经</a>
 					</div>
 				</section>
 				
@@ -176,6 +176,63 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-CMS收集器运行步骤" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/29/CMS收集器运行步骤/" class="article-date">
+  	<time datetime="2016-03-29T15:18:35.000Z" itemprop="datePublished">2016-03-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/29/CMS收集器运行步骤/">CMS收集器运行步骤</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <font size="4">面试被问到CMS收集器四个步骤，没有回答上来，现在总结一下。</font><br><table><thead><tr><th>步骤</th><th align="left">执行方式</th><th align="left">执行内容</th></tr></thead><tbody><tr><td>1.初始标记</td><td align="left">stop the world</td><td align="left">标记哪些是GC Roots对象</td></tr><tr><td>2.并发标记</td><td align="left">与用户线程并发执行</td><td align="left">进行GC Roots Tracing过程，也就是所谓的可达性分析</td></tr><tr><td>3.重新标记</td><td align="left">stop the world</td><td align="left">修正第二步因用户线程运行而导致标记产生变动的那一部分对象的标记记录</td></tr><tr><td>4.并发清除</td><td align="left">与用户线程并发执行</td><td align="left">以”标记-清除”算法进行对象的清理工作</td></tr></tbody></table><br><font size="4">CMS(Concurrent Mark Sweep)收集器是一种以获取最短回收停顿时间为目标的收集器，这是因为整个过程中耗时最长的并发标记和并发清除过程收集器线程都可以与用户线程一起工作。</font>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-汽车之家面经" class="article article-type-post" itemscope itemprop="blogPost">
   
